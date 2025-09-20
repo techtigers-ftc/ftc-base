@@ -22,6 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ftc-state-machine"
-include ':state-machine'
-include ':core'
+rootProject.name = "ftc-base"
+include ':base'
