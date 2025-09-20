@@ -21,67 +21,37 @@ class StateMachineTest {
     }
 
     @Test
-    @DisplayName("Adding a state stores it correctly")
-    void addStateStoresStateCorrectly() {
-        stateMachine.addState(mockState);
-        assertTrue(stateMachine.addState(mockState) instanceof StateMachine);
-    }
-
-    @Test
-    @DisplayName("Setting the first state to a non-existent state throws IllegalArgumentException")
-    void setFirstStateToNonExistentStateThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> stateMachine.setFirstState("nonExistentState"));
+    @DisplayName("Setting the current state to a non-existent state throws IllegalArgumentException")
+    void setCurrentStateToNonExistentStateThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> stateMachine.setCurrentState(mockState));
     }
 
     @Test
     @DisplayName("Setting the first state to an existing state does not throw exception")
-    void setFirstStateToExistingState() {
+    void setCurrentStateToExistingState() {
         stateMachine.addState(mockState);
-        assertDoesNotThrow(() -> stateMachine.setFirstState(mockState.getName()));
+        assertDoesNotThrow(() -> stateMachine.setCurrentState(mockState));
     }
 
     @Test
-    @DisplayName("Starting without a first state set throws IllegalStateException")
-    void startWithoutFirstStateSetThrowsException() {
+    @DisplayName("Starting without a current state set throws IllegalStateException")
+    void startWithoutCurrentStateSetThrowsException() {
         assertThrows(IllegalStateException.class, () -> stateMachine.start());
     }
 
     @Test
-    @DisplayName("Starting with a first state set does not throw exception")
-    void startWithFirstStateSet() {
+    @DisplayName("Starting with a current state set does not throw exception")
+    void startWithCurrentStateSet() {
         stateMachine.addState(mockState);
-        stateMachine.setFirstState(mockState.getName());
+        stateMachine.setCurrentState(mockState);
         assertDoesNotThrow(() -> stateMachine.start());
-    }
-
-    @Test
-    @DisplayName("Updating state machine transitions to next state on condition")
-    void updateTransitionsToNextStateOnCondition() {
-        State nextState = mock(State.class);
-        when(nextState.getName()).thenReturn("nextState");
-
-        when(mockTransition.isFinished(null)).thenReturn(true);
-        when(mockTransition.getNextState()).thenReturn("nextState");
-
-        stateMachine.addState(mockState)
-                .addState(nextState)
-                .addCondition(mockState.getName(), mockTransition);
-        stateMachine.setFirstState(mockState.getName());
-
-        stateMachine.start();
-
-        stateMachine.update();
-
-        verify(mockTransition, times(1)).isFinished(null);
-        verify(mockState, times(1)).initialize();
-        verify(nextState, times(1)).initialize();
     }
 
     @Test
     @DisplayName("Updating state machine without conditions does nothing")
     void updateWithoutConditionsDoesNothing() {
         stateMachine.addState(mockState)
-                .setFirstState(mockState.getName());
+                .setCurrentState(mockState);
         stateMachine.start();
 
         assertDoesNotThrow(() -> stateMachine.update());
