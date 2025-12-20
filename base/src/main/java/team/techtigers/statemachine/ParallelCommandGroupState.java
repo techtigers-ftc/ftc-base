@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 public abstract class ParallelCommandGroupState<T> extends ParallelCommandGroup implements State<T> {
     private final String name;
-    private final double timeout;
+    private double timeout;
     private final ElapsedTime timer;
 
     /**
@@ -62,5 +62,14 @@ public abstract class ParallelCommandGroupState<T> extends ParallelCommandGroup 
      */
     protected final double getRemainingTime() {
         return timeout - timer.seconds();
+    }
+
+    /**
+     * Sets the timeout for the state
+     *
+     * @param timeout the timeout in seconds
+     */
+    protected final void setTimeout(double timeout) {
+        this.timeout = timeout;
     }
 }
