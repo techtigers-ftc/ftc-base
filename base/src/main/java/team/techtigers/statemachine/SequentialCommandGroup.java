@@ -10,7 +10,7 @@ public class SequentialCommandGroup extends com.arcrobotics.ftclib.command.Seque
         init();
     }
 
-    public void update(){};
+    public void update(){}
 
     @Override
     public void execute() {
@@ -18,12 +18,11 @@ public class SequentialCommandGroup extends com.arcrobotics.ftclib.command.Seque
         update();
     }
 
-    public void cleanup(){};
+    public void cleanup(boolean interrupted){}
 
     @Override
     public void end(boolean interrupted) {
         super.end(interrupted);
-        cleanup();
+        cleanup(interrupted);
     }
-
 }

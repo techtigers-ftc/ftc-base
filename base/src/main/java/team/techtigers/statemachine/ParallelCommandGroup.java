@@ -18,12 +18,12 @@ public class ParallelCommandGroup extends com.arcrobotics.ftclib.command.Paralle
         update();
     }
 
-    public void cleanup(){};
+    public void cleanup(boolean interrupted) {};
 
     @Override
     public void end(boolean interrupted) {
         super.end(interrupted);
-        cleanup();
+        cleanup(interrupted);
     }
 
 }
