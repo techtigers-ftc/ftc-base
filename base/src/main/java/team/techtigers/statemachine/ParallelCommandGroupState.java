@@ -1,6 +1,5 @@
 package team.techtigers.statemachine;
 
-import com.arcrobotics.ftclib.command.ParallelCommandGroup;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
@@ -35,8 +34,7 @@ public abstract class ParallelCommandGroupState<T> extends ParallelCommandGroup 
     }
 
     @Override
-    public void initialize(){
-        super.initialize();
+    public void init(){
         timer.reset();
     }
 

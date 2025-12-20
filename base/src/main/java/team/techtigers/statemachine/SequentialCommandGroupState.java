@@ -1,6 +1,5 @@
 package team.techtigers.statemachine;
 
-import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
@@ -39,8 +38,7 @@ public abstract class SequentialCommandGroupState<T> extends SequentialCommandGr
     }
 
     @Override
-    public void initialize(){
-        super.initialize();
+    public void init(){
         timer.reset();
     }
     /**

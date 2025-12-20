@@ -95,6 +95,28 @@ public class StateMachine<T> {
     }
 
     /**
+     * Overload method that takes state names instead of state objects
+     *
+     * @param fromStateName the name of the state to transition from
+     * @param toStateName the name of the state to transition to
+     * @param condition the condition that must be met for the transition
+     * @return the state machine to allow for method chaining
+     */
+    public StateMachine<T> addTransition(String fromStateName, String toStateName, T condition) {
+
+        State<T> fromState = stateMap.get(fromStateName);
+        State<T> toState = stateMap.get(toStateName);
+        if (fromState == null) {
+            throw new IllegalArgumentException("State: " + fromStateName + " does not exist");
+        }
+        if (toState == null) {
+            throw new IllegalArgumentException("State: " + toStateName + " does not exist");
+        }
+        addCondition(fromState, new Transition<>(condition, toState));
+        return this;
+    }
+
+    /**
      * Sets the current state of the state machine that will be run.
      * Note: In the opmode, this should be the last call in the chain
      *
