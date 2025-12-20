@@ -164,7 +164,7 @@ public class StateMachine<T> {
         return "";
     }
 
-    public HashMap getStateMap() {
+    public HashMap<String, State<T>> getStateMap() {
         return stateMap;
     }
 }
