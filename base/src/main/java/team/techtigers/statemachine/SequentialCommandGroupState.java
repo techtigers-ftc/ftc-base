@@ -1,6 +1,5 @@
 package team.techtigers.statemachine;
 
-import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
