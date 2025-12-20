@@ -103,7 +103,6 @@ public class StateMachine<T> {
      * @return the state machine to allow for method chaining
      */
     public StateMachine<T> addTransition(String fromStateName, String toStateName, T condition) {
-
         State<T> fromState = stateMap.get(fromStateName);
         State<T> toState = stateMap.get(toStateName);
         if (fromState == null) {
