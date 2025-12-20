@@ -16,6 +16,7 @@ import java.util.Objects;
 public class StateMachine<T> {
     private final ArrayList<State<T>> stateList;
     private final HashMap<String, ArrayList<Transition<T>>> transitionMap;
+    private final HashMap<String, State<T>> stateMap;
     private State<T> currentState;
     private State<T> previousState;
     private ArrayList<Transition<T>> currentTransitions;
@@ -27,6 +28,7 @@ public class StateMachine<T> {
     public StateMachine() {
         stateList = new ArrayList<>();
         transitionMap = new HashMap<>();
+        stateMap = new HashMap<>();
         currentState = null;
         previousState = null;
         currentTransitions = null;
@@ -44,6 +46,8 @@ public class StateMachine<T> {
         }
         stateList.add(state);
         transitionMap.put(state.getName(), new ArrayList<>());
+
+        stateMap.put(state.getName(), state);
 
         return this;
     }
@@ -158,5 +162,9 @@ public class StateMachine<T> {
             return previousState.getName();
         }
         return "";
+    }
+
+    public HashMap getStateMap() {
+        return stateMap;
     }
 }
