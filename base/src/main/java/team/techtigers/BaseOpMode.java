@@ -45,7 +45,7 @@ public abstract class BaseOpMode extends CommandOpMode {
      * Method that is called as the OpMode ends. It is recommended to
      * use subsystems end() method if possible, but this is also an option.
      */
-    protected void end() {
+    protected void cleanup() {
     }
 
     /**
@@ -90,7 +90,7 @@ public abstract class BaseOpMode extends CommandOpMode {
             for (CloseableSubsystem subsystem : subsystems) {
                 subsystem.close();
             }
-            end();
+            cleanup();
         }
     }
 }
