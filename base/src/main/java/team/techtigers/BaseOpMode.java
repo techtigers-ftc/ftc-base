@@ -72,7 +72,7 @@ public abstract class BaseOpMode extends CommandOpMode {
             initialize();
             waitForStart();
             for (CloseableSubsystem subsystem : subsystems) {
-                subsystem.init();
+                subsystem.justAfterStart();
             }
             justAfterStart();
 

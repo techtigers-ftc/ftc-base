@@ -34,9 +34,9 @@ public class CloseableSubsystem extends SubsystemBase {
     }
 
     /**
-     * Optional method to initialize the subsystem prior to the OpMode starting. This method can be
-     * overridden by child classes.
+     * Optional method to initialize the subsystem after the operator presses the start button.
+     * This method can be overridden by child classes.
      */
-    public void init() {
+    public void justAfterStart() {
     }
 }
