@@ -2,6 +2,8 @@ package team.techtigers.statemachine;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import team.techtigers.ParallelCommandGroup;
+
 /**
  * State that extends ParallelCommandGroup, to be used in a state machine
  *

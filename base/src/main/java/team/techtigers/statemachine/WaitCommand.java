@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import java.util.concurrent.TimeUnit;
 
+import team.techtigers.BaseCommand;
+
 /**
  * Wait command that waits for a specified duration
  */
