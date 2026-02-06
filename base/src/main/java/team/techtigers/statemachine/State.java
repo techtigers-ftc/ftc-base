@@ -17,4 +17,9 @@ public interface State<T> extends Command {
      * Returns the name of the state
      */
     String getName();
+
+    /**
+     * Configures all the commands for the state
+     */
+    void addCommands();
 }
