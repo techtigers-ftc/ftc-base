@@ -21,5 +21,5 @@ public interface State<T> extends Command {
     /**
      * Configures all the commands for the state
      */
-    void addCommands();
+    void configureCommands();
 }
