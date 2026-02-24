@@ -1,7 +1,6 @@
 package team.techtigers.statemachine;
 
 import com.arcrobotics.ftclib.command.CommandScheduler;
-import com.qualcomm.robotcore.robot.RobotState;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +19,6 @@ public class StateMachine<T> {
     private State<T> currentState;
     private State<T> previousState;
     private ArrayList<Transition<T>> currentTransitions;
-    private RobotState robotState;
 
     /**
      * Initializes a new StateMachine
@@ -130,6 +128,15 @@ public class StateMachine<T> {
         currentState = state;
 
         currentTransitions = transitionMap.get(currentState.getName());
+    }
+
+    public void setCurrentState(String stateName) {
+        State<T> state = stateMap.get(stateName);
+        if (state == null) {
+            throw new IllegalArgumentException("State: " + stateName + " does not exist");
+        }
+
+        setCurrentState(state);
     }
 
     /**
